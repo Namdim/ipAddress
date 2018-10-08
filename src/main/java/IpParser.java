@@ -14,15 +14,14 @@ public class IpParser {
 
         //Считаем количество точек
         int countDot = ipStr.split("\\.",-1).length-1;
-        System.out.println("количество точек = " + countDot);
+       // System.out.println("количество точек = " + countDot);
 
-        System.out.print(" in parser execute " + ipStr+"\n");
         if(countDot==3) {
             for (int i = 0; i < element.length; i++) {
                 try {
                     IpElements.add(Integer.parseInt(element[i]));
                 } catch (NumberFormatException e) { //в скобках указывается класс конкретной ожидаемой ошибки
-                    System.out.print("Ip element " + i + " = " + element[i] + " novalide \n");
+                    System.out.print("Ip элемент " + i + " = " + element[i] + " не валидный \n");
                     IpElements.clear();
                     IpElements.add(-1);
                     break;
