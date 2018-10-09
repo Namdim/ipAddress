@@ -4,7 +4,7 @@ import java.util.ArrayList;
 //ArrayList<Integer>
 public class IpParser {
 
-    ArrayList<Integer> IpElements= new ArrayList<Integer>();
+    private ArrayList<Integer> IpElements= new ArrayList<Integer>();
 
     public ArrayList<Integer> execute(String ipStr){
         //убираем мусор

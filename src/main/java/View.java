@@ -9,9 +9,12 @@ public class View {
         IpValidator validator= new IpValidator();
         Boolean validIp= false;
 
+        IpRange range= new IpRange();
+
         //вводим 1-й ip
         Scanner ipInput = new Scanner(System.in);
         String ipStr;
+
 
 
         //проверяем на валидность введенную строку
@@ -25,7 +28,6 @@ public class View {
                 ip1.setElement3(validator.setValidIp().get(2));
                 ip1.setElement4(validator.setValidIp().get(3));
                 validIp= true;
-                //   System.out.print(ip1.getElement1()+"."+ip1.getElement2()+"."+ip1.getElement3()+"."+ip1.getElement4() );
             }
 
         }
@@ -35,14 +37,14 @@ public class View {
             ipStr = ipInput.nextLine();
 
             if (validator.check(ipStr)) {
-                ip1.setElement1(validator.setValidIp().get(0));
-                ip1.setElement2(validator.setValidIp().get(1));
-                ip1.setElement3(validator.setValidIp().get(2));
-                ip1.setElement4(validator.setValidIp().get(3));
+                ip2.setElement1(validator.setValidIp().get(0));
+                ip2.setElement2(validator.setValidIp().get(1));
+                ip2.setElement3(validator.setValidIp().get(2));
+                ip2.setElement4(validator.setValidIp().get(3));
                 validIp= true;
-                //System.out.print(ip1.getElement1()+"."+ip1.getElement2()+"."+ip1.getElement3()+"."+ip1.getElement4() );
             }
         }
+        range.print(ip1,ip2);
 
 
     }
