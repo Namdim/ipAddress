@@ -1,12 +1,20 @@
+import java.util.ArrayList;
+
 public class IpRange {
     // id range: range1.range2.range3.range4
     private Boolean range4= false, range3= false, range2= false, range1= false;
     private int upLimitRange = 256;
+    private ArrayList<IpAddress> ipAddresses= new ArrayList<IpAddress>();
 
-    public boolean print(IpAddress ipAddress1, IpAddress ipAddress2){
+
+    public ArrayList<IpAddress> get(IpAddress ipAddress1, IpAddress ipAddress2){
+        set(ipAddress1, ipAddress2);
+        return ipAddresses;
+    }
+
+    private boolean set(IpAddress ipAddress1, IpAddress ipAddress2){
         compare(ipAddress1, ipAddress2);
         int range4tmp= ipAddress1.getPart4(), range3tmp= ipAddress1.getPart3(), range2tmp= ipAddress1.getPart2();
-        //System.out.println("Start :"+ipAddress1.getPart1()+"."+ipAddress1.getPart2()+"."+ipAddress1.getPart3()+"."+ipAddress1.getPart4()+"----");
 
         if(range1){
             //переходим к range2
@@ -20,7 +28,7 @@ public class IpRange {
                     else {
                         //выводим range 4
                         for (int l = 0; l<= ipAddress2.getPart4(); l++){
-                            System.out.println(ipAddress2.getPart1()+"."+ ipAddress2.getPart2()+"."+ ipAddress2.getPart3()+"."+l);
+                            addIpAddresses(ipAddress2.getPart1(), ipAddress2.getPart2(), ipAddress2.getPart3(), l );
                         }
                         return true;
                     }
@@ -30,13 +38,13 @@ public class IpRange {
                     for(int i = ipAddress1.getPart3(); i<= ipAddress2.getPart3(); i++){
                         if(i== ipAddress2.getPart3()) break;
                         for(int j = range4tmp; j< upLimitRange; j++){
-                            System.out.println(ipAddress1.getPart1()+"."+ ipAddress1.getPart2()+"."+i+"."+j);
+                            addIpAddresses(ipAddress1.getPart1(), ipAddress1.getPart2(), i, j );
                         }
                         range4tmp=0;
                     }
                     //выводим range 4
                     for (int l = 0; l<= ipAddress2.getPart4(); l++){
-                        System.out.println(ipAddress2.getPart1()+"."+ ipAddress2.getPart2()+"."+ ipAddress2.getPart3()+"."+l);
+                        addIpAddresses(ipAddress2.getPart1(), ipAddress2.getPart2(), ipAddress2.getPart3(), l);
                     }
                     return true;
                 }
@@ -49,7 +57,7 @@ public class IpRange {
                     if (k == ipAddress2.getPart2()) break;
                     for (int i = range3tmp; i < upLimitRange; i++) {
                         for (int j = range4tmp; j < upLimitRange; j++) {
-                            System.out.println(ipAddress1.getPart1() + "." + k + "." + i + "." + j);
+                            addIpAddresses(ipAddress1.getPart1(), k, i, j );
                         }
                         range4tmp = 0;
                     }
@@ -57,7 +65,7 @@ public class IpRange {
                 }
                 //выводим range 4
                 for (int l = 0; l<= ipAddress2.getPart4(); l++){
-                    System.out.println(ipAddress2.getPart1()+"."+ ipAddress2.getPart2()+"."+ ipAddress2.getPart3()+"."+l);
+                    addIpAddresses(ipAddress2.getPart1(), ipAddress2.getPart2(), ipAddress2.getPart3(), l);
                 }
                 return true;
             }
@@ -69,7 +77,7 @@ public class IpRange {
                 for (int k = range2tmp; k < upLimitRange; k++) {
                     for (int i = range3tmp; i < upLimitRange; i++) {
                         for (int j = range4tmp; j < upLimitRange; j++) {
-                            System.out.println(l + "." + k + "." + i + "." + j);
+                            addIpAddresses(l, k, i, j );
                         }
                         range4tmp = 0;
                     }
@@ -78,11 +86,16 @@ public class IpRange {
                 range2tmp=0;
             }
             for (int l = 0; l<= ipAddress2.getPart4(); l++){
-                System.out.println(ipAddress2.getPart1()+"."+ ipAddress2.getPart2()+"."+ ipAddress2.getPart3()+"."+l);
+                addIpAddresses(ipAddress2.getPart1(), ipAddress2.getPart2(), ipAddress2.getPart3(), l );
             }
         }
         return true;
     }
+
+    private void addIpAddresses(int l, int k, int i, int j){
+        ipAddresses.add(new IpAddress(l,k,i,j));
+    }
+
     public void compare(IpAddress ipAddress1, IpAddress ipAddress2){
 
         if(ipAddress1.getPart1()== ipAddress2.getPart1()) range1= true;

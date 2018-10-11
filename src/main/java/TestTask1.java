@@ -12,13 +12,13 @@ public class TestTask1 {
         Scanner ipInput = new Scanner(System.in);
         String ipStr;
 
-        //check the validity of the entered string
+        //isValidIpStr the validity of the entered string
         // if notvalidity return enter
         while(!isValidIp) {
             System.out.print("\nEnter 1-st ip: ");
             //enter 1-st ip
             ipStr = ipInput.nextLine();
-            if (validator.check(ipStr)) {
+            if (validator.isValidIpStr(ipStr)) {
                 ipAddress1= IpMapper.get(ipStr);
                 isValidIp= true;
             }
@@ -29,13 +29,13 @@ public class TestTask1 {
             System.out.print("\nEnter 2-nd ip: ");
             //enter 2-nd ip
             ipStr = ipInput.nextLine();
-            if (validator.check(ipStr)) {
+            if (validator.isValidIpStr(ipStr)) {
                 ipAddress2= IpMapper.get(ipStr);
                 isValidIp= true;
             }
         }
 
-        ipRange.print(ipAddress1, ipAddress2);
+        IpPrinter.print(ipRange.get( ipAddress1, ipAddress2) );
 
 
     }

@@ -6,7 +6,7 @@ public class IpValidator {
    private ArrayList<Integer> ipAddressesTmp = new ArrayList<Integer>();
 
 
-    //Определяем находится ли элемент 0, 255
+    //Check limit part at 0, 255
     private boolean isLimitIdPart(Integer partId){
         if(partId>=0 && partId<=255)
             return true;
@@ -16,7 +16,7 @@ public class IpValidator {
 
     //check quantity parts in ip string
     //check every part to valid range
-    public boolean check(String IpStr) {
+    public boolean isValidIpStr(String IpStr) {
 
         ipAddressesTmp = ipParser.get(IpStr);
 
@@ -26,12 +26,12 @@ public class IpValidator {
             if (ipAddressesTmp.size() == 4) {
                 for (int i = 0; i < ipAddressesTmp.size(); i++) {
                     if (isLimitIdPart(ipAddressesTmp.get(i)) == false) {
-                        System.out.print("Part " + ipAddressesTmp.get(i) + "out of range 0, 255");
+                        System.out.println("Part " + ipAddressesTmp.get(i) + " out of range 0, 255");
                         return false;
                     }
                 }
             } else {
-                System.out.print("Quantity parts no validity =" + ipAddressesTmp.size());
+                System.out.println("Quantity parts no validity =" + ipAddressesTmp.size());
                 return false;
             }
         }

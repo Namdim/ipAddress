@@ -7,7 +7,7 @@ public class IpAddressParserTest {
     IpParser ipParser;
      ArrayList<Integer> IpAddress;
 
-    @Before // Перед началом теста создадим обект парсера
+    @Before
     public void setUp() {
         ipParser = new IpParser();
         IpAddress = new ArrayList<Integer>();
@@ -18,7 +18,7 @@ public class IpAddressParserTest {
         ipParser = null;
     }
 
-    @Test//могу так написать тест ?
+    @Test
     public void testExecute() throws Exception{
         IpAddress.add(1);
         IpAddress.add(123);
