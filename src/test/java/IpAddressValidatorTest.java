@@ -3,12 +3,12 @@ import static org.junit.Assert.*;
 
 public class IpAddressValidatorTest {
     IpValidator ipValidator;
-    @Before // Перед началом теста создадим обект validator
+    @Before
     public void setUp() {
         ipValidator = new IpValidator();
     }
     @After
-    public void serDown(){
+    public void setDown(){
         ipValidator = null;
     }
     @Test

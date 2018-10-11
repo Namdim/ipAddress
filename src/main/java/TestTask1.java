@@ -35,7 +35,10 @@ public class TestTask1 {
             }
         }
 
-        IpPrinter.print(ipRange.get( ipAddress1, ipAddress2) );
+        LimitsIpRange limitsIpRange= new LimitsIpRange();
+        limitsIpRange.findLimitsIpRange(ipAddress1, ipAddress2);
+
+        IpPrinter.print(ipRange.get( limitsIpRange.getLowLimitIpRange(), limitsIpRange.getTopLimitIpRange()) );
 
 
     }

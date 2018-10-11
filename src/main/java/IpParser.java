@@ -5,7 +5,6 @@ public class IpParser {
     private ArrayList<Integer> IpPart = new ArrayList<Integer>();
 
     public ArrayList<Integer> get(String ipStr){
-        //убираем мусор
         IpPart.clear();
 
         String [] partStrId = ipStr.split("\\.");
