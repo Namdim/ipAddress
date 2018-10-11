@@ -2,45 +2,41 @@ import java.util.ArrayList;
 
 public class IpValidator {
 
-   private IpParser parser= new IpParser();
-   private ArrayList<Integer> Iptmp= new ArrayList<Integer>();
+   private IpParser ipParser = new IpParser();
+   private ArrayList<Integer> ipAddressesTmp = new ArrayList<Integer>();
 
 
     //Определяем находится ли элемент 0, 255
-    private boolean validate(Integer element){
-        if(element>=0 && element<=255)
+    private boolean isLimitIdPart(Integer partId){
+        if(partId>=0 && partId<=255)
             return true;
         else
             return  false;
     }
 
-    //проверяет на количество элементов в предполанаемом ip
-    //проверяет каждый элемент на допустимый диапозон
+    //check quantity parts in ip string
+    //check every part to valid range
     public boolean check(String IpStr) {
-        //парсим ввеженую строку и возвращаем полученный списиок элементов ip
 
-        Iptmp = parser.execute(IpStr);
+        ipAddressesTmp = ipParser.get(IpStr);
 
-        //если в строке точек не валидное количество
-        if(Iptmp.get(0)!=-1) {
-            //если количество элементов не равно 4, то строка не валидна
-            if (Iptmp.size() == 4) {
-                for (int i = 0; i < Iptmp.size(); i++) {
-                    if (validate(Iptmp.get(i)) == false) {
-                        System.out.print("Элемент " + Iptmp.get(i) + "вне диапозона 0, 255");
+        //if string has no validity quantity dots
+        if(ipAddressesTmp.get(0)!=-1) {
+            //if quanity parts !equals 4 ip string no validity
+            if (ipAddressesTmp.size() == 4) {
+                for (int i = 0; i < ipAddressesTmp.size(); i++) {
+                    if (isLimitIdPart(ipAddressesTmp.get(i)) == false) {
+                        System.out.print("Part " + ipAddressesTmp.get(i) + "out of range 0, 255");
                         return false;
                     }
                 }
             } else {
-                System.out.print("Не валидное количество элементов в ip" + Iptmp.size());
+                System.out.print("Quantity parts no validity =" + ipAddressesTmp.size());
                 return false;
             }
         }
         else return false;
 
         return true;
-    }
-    public ArrayList<Integer> setValidIp(){
-        return Iptmp;
     }
 }

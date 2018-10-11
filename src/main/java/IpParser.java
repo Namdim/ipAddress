@@ -1,38 +1,36 @@
-import com.sun.deploy.util.StringUtils;
-
 import java.util.ArrayList;
 //ArrayList<Integer>
 public class IpParser {
 
-    private ArrayList<Integer> IpElements= new ArrayList<Integer>();
+    private ArrayList<Integer> IpPart = new ArrayList<Integer>();
 
-    public ArrayList<Integer> execute(String ipStr){
+    public ArrayList<Integer> get(String ipStr){
         //убираем мусор
-        IpElements.clear();
+        IpPart.clear();
 
-        String [] element = ipStr.split("\\.");
+        String [] partStrId = ipStr.split("\\.");
 
-        //Считаем количество точек
+        //Calculate quantity dots
         int countDot = ipStr.split("\\.",-1).length-1;
-       // System.out.println("количество точек = " + countDot);
+
 
         if(countDot==3) {
-            for (int i = 0; i < element.length; i++) {
+            for (int i = 0; i < partStrId.length; i++) {
                 try {
-                    IpElements.add(Integer.parseInt(element[i]));
-                } catch (NumberFormatException e) { //в скобках указывается класс конкретной ожидаемой ошибки
-                    System.out.print("Ip элемент " + i + " = " + element[i] + " не валидный \n");
-                    IpElements.clear();
-                    IpElements.add(-1);
+                    IpPart.add(Integer.parseInt(partStrId[i]));
+                } catch (NumberFormatException e) {
+                    System.out.print("IpAddress part " + i + " = " + partStrId[i] + " no validity \n");
+                    IpPart.clear();
+                    IpPart.add(-1);
                     break;
                 }
             }
         }
         else{
-            System.out.print("Количество точекне равно 3 \n");
-            IpElements.clear();
-            IpElements.add(-1);
+            System.out.print("Ip string no validity\n");
+            IpPart.clear();
+            IpPart.add(-1);
         }
-        return IpElements;
+        return IpPart;
     }
 }
