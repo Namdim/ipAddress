@@ -2,15 +2,13 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class IpAddressValidatorTest {
-    IpValidator ipValidator;
+    private IpValidator ipValidator;
+
     @Before
     public void setUp() {
         ipValidator = new IpValidator();
     }
-    @After
-    public void setDown(){
-        ipValidator = null;
-    }
+
     @Test
     public void testIsValidIpStr() throws Exception{
         String[] ipStr={"1.1.1.1", "1.256.168.2", "0.0.0.1.", "1,2.3.4","23.12o.1.2","1.2.3.4.5"};

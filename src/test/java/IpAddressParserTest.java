@@ -1,21 +1,14 @@
 import org.junit.*;
-
 import java.util.ArrayList;
 
-
 public class IpAddressParserTest {
-    IpParser ipParser;
-     ArrayList<Integer> IpAddress;
+    private IpParser ipParser;
+    private ArrayList<Integer> IpAddress;
 
     @Before
     public void setUp() {
         ipParser = new IpParser();
         IpAddress = new ArrayList<Integer>();
-    }
-
-    @After
-    public void setDown(){
-        ipParser = null;
     }
 
     @Test
@@ -26,7 +19,5 @@ public class IpAddressParserTest {
         IpAddress.add(255);
         Assert.assertEquals(IpAddress, ipParser.get("1.123.43.255"));
     }
-
-
 
 }

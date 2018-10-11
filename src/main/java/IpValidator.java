@@ -1,17 +1,19 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class IpValidator {
 
    private IpParser ipParser = new IpParser();
-   private ArrayList<Integer> ipAddressesTmp = new ArrayList<Integer>();
-
+   private List<Integer> ipAddressesTmp = new ArrayList<Integer>();
 
     //Check limit part at 0, 255
     private boolean isLimitIdPart(Integer partId){
-        if(partId>=0 && partId<=255)
+        if(partId >= 0 && partId <= 255) {
             return true;
-        else
-            return  false;
+        }
+        else {
+            return false;
+        }
     }
 
     //check quantity parts in ip string
@@ -35,7 +37,7 @@ public class IpValidator {
                 return false;
             }
         }
-        else return false;
+        else {return false;}
 
         return true;
     }

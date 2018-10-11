@@ -1,13 +1,16 @@
 public class IpAddress {
     //ip consist of 4 parts: part1.part2.part3.part4
     private int part1, part2, part3, part4;
+
     public IpAddress(int part1, int part2, int part3, int part4) {
         this.part1 = part1;
         this.part2 = part2;
         this.part3 = part3;
         this.part4 = part4;
     }
+
     public IpAddress(){}
+
     public void setPart1(int part1){
         this.part1 = part1;
     }

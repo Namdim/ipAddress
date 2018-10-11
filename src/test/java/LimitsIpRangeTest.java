@@ -4,20 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class LimitsIpRangeTest {
-    LimitsIpRange limitsIpRange;
-    IpAddress idIpAddress1 = new IpAddress(1,1,1,1);
-    IpAddress idIpAddress2 = new IpAddress(1,1,1,2);
-    IpAddress idIpAddress3 = new IpAddress(1,1,2,1);
-    IpAddress idIpAddress4 = new IpAddress(1,23,1,1);
-    IpAddress idIpAddress5 = new IpAddress(6,0,1,0);
+    private LimitsIpRange limitsIpRange;
+    private IpAddress idIpAddress1 = new IpAddress(1,1,1,1);
+    private IpAddress idIpAddress2 = new IpAddress(1,1,1,2);
+    private IpAddress idIpAddress3 = new IpAddress(1,1,2,1);
+    private IpAddress idIpAddress4 = new IpAddress(1,23,1,1);
+    private IpAddress idIpAddress5 = new IpAddress(6,0,1,0);
+
     @Before
     public void setUp() {
         limitsIpRange = new LimitsIpRange();
     }
-    @After
-    public void setDown(){
-        limitsIpRange = null;
-    }
+
     @Test
     public void testFindLimitsIpRange(){
         limitsIpRange.findLimitsIpRange(idIpAddress1,idIpAddress2);
